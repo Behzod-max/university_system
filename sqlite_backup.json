@@ -1,0 +1,547 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$guBlJs6K8JZUMqEg6QQkLI$PUgTJhClml+DV6/jwIzsQdJwNSicuYeSWtuFlgBHja4=",
+    "last_login": "2026-09-11T13:35:27.863Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-11T13:34:46.964Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "p4wwk6plj6kw49i8x2bv86gw5la5n5cs",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe-yNbL8UXCckp4zRGu_NQ4gW8qnirg7ipQC2pnR7DTytpZxW2QeJ9BAhi6_LHJ6ST0EnlwfTaVW13mK6kjUaRd1b5D37Wz_BoWXQgO5lL0OHfrQWWtF-5xNrx07jghWWFic1yFlDUAQ7FUA4RxyBMMb-nwB-N85hg:1x51Pb:N51Zgzwd4J2NJovotuBQ0WIrgINYzE_DL3z-ysoU0zc",
+    "expire_date": "2026-09-25T13:35:27.870Z"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 1,
+  "fields": {
+    "first_name": "Akmal",
+    "last_name": "Karimov",
+    "phone": "+998901234567",
+    "email": "akmal@gmail.com"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 3,
+  "fields": {
+    "first_name": "Jasur",
+    "last_name": "Aliyev",
+    "phone": "+998901234502",
+    "email": "teacher2@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 4,
+  "fields": {
+    "first_name": "Dilshod",
+    "last_name": "Rahimov",
+    "phone": "+998901234503",
+    "email": "teacher3@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 5,
+  "fields": {
+    "first_name": "Sardor",
+    "last_name": "Usmonov",
+    "phone": "+998901234504",
+    "email": "teacher4@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 6,
+  "fields": {
+    "first_name": "Aziz",
+    "last_name": "Toshpulatov",
+    "phone": "+998901234505",
+    "email": "teacher5@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 7,
+  "fields": {
+    "first_name": "Madina",
+    "last_name": "Qodirova",
+    "phone": "+998901234506",
+    "email": "teacher6@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 8,
+  "fields": {
+    "first_name": "Malika",
+    "last_name": "Abdullayeva",
+    "phone": "+998901234507",
+    "email": "teacher7@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 9,
+  "fields": {
+    "first_name": "Sherzod",
+    "last_name": "Nazarov",
+    "phone": "+998901234508",
+    "email": "teacher8@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 10,
+  "fields": {
+    "first_name": "Kamola",
+    "last_name": "Yusupova",
+    "phone": "+998901234509",
+    "email": "teacher9@university.uz"
+  }
+},
+{
+  "model": "university.teacher",
+  "pk": 11,
+  "fields": {
+    "first_name": "Rustam",
+    "last_name": "Ismoilov",
+    "phone": "+998901234510",
+    "email": "teacher10@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 1,
+  "fields": {
+    "first_name": "Behzod",
+    "last_name": "Otaqulov",
+    "group": "IT-24",
+    "email": "behzod@gmail.com"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 2,
+  "fields": {
+    "first_name": "Behzod",
+    "last_name": "Otaqulov",
+    "group": "IT-25",
+    "email": "student1@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 3,
+  "fields": {
+    "first_name": "Ali",
+    "last_name": "Valiyev",
+    "group": "IT-26",
+    "email": "student2@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 4,
+  "fields": {
+    "first_name": "Hasan",
+    "last_name": "Karimov",
+    "group": "IT-24",
+    "email": "student3@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 5,
+  "fields": {
+    "first_name": "Husan",
+    "last_name": "Rahmonov",
+    "group": "IT-25",
+    "email": "student4@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 6,
+  "fields": {
+    "first_name": "Sardor",
+    "last_name": "Akmalov",
+    "group": "IT-26",
+    "email": "student5@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 7,
+  "fields": {
+    "first_name": "Javohir",
+    "last_name": "Tursunov",
+    "group": "IT-24",
+    "email": "student6@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 8,
+  "fields": {
+    "first_name": "Muhammad",
+    "last_name": "Aliyev",
+    "group": "IT-25",
+    "email": "student7@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 9,
+  "fields": {
+    "first_name": "Abdulloh",
+    "last_name": "Sobirov",
+    "group": "IT-26",
+    "email": "student8@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 10,
+  "fields": {
+    "first_name": "Azizbek",
+    "last_name": "Nazarov",
+    "group": "IT-24",
+    "email": "student9@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 11,
+  "fields": {
+    "first_name": "Diyor",
+    "last_name": "Islomov",
+    "group": "IT-25",
+    "email": "student10@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 12,
+  "fields": {
+    "first_name": "Bekzod",
+    "last_name": "Usmonov",
+    "group": "IT-26",
+    "email": "student11@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 13,
+  "fields": {
+    "first_name": "Shoxrux",
+    "last_name": "Qodirov",
+    "group": "IT-24",
+    "email": "student12@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 14,
+  "fields": {
+    "first_name": "Madina",
+    "last_name": "Karimova",
+    "group": "IT-25",
+    "email": "student13@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 15,
+  "fields": {
+    "first_name": "Sevinch",
+    "last_name": "Abdullayeva",
+    "group": "IT-26",
+    "email": "student14@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 16,
+  "fields": {
+    "first_name": "Zarina",
+    "last_name": "Yusupova",
+    "group": "IT-24",
+    "email": "student15@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 17,
+  "fields": {
+    "first_name": "Mohira",
+    "last_name": "Rasulova",
+    "group": "IT-25",
+    "email": "student16@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 18,
+  "fields": {
+    "first_name": "Jasmina",
+    "last_name": "Toshpulatova",
+    "group": "IT-26",
+    "email": "student17@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 19,
+  "fields": {
+    "first_name": "Kamron",
+    "last_name": "Ismoilov",
+    "group": "IT-24",
+    "email": "student18@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 20,
+  "fields": {
+    "first_name": "Oybek",
+    "last_name": "Ergashev",
+    "group": "IT-25",
+    "email": "student19@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 21,
+  "fields": {
+    "first_name": "Farrux",
+    "last_name": "Saidov",
+    "group": "IT-26",
+    "email": "student20@university.uz"
+  }
+},
+{
+  "model": "university.student",
+  "pk": 22,
+  "fields": {
+    "first_name": "Azamat",
+    "last_name": "Latipov",
+    "group": "ALG005",
+    "email": "Latipovazamat06@gmail.com"
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 1,
+  "fields": {
+    "name": "Python dasturlash",
+    "code": "PY001",
+    "credits": 6,
+    "teacher": 1,
+    "students": [
+      20,
+      19,
+      1,
+      17,
+      18,
+      16
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 2,
+  "fields": {
+    "name": "Django",
+    "code": "DJ002",
+    "credits": 6,
+    "teacher": 3,
+    "students": [
+      8,
+      11,
+      10,
+      9,
+      12
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 3,
+  "fields": {
+    "name": "Ma'lumotlar bazasi",
+    "code": "DB003",
+    "credits": 5,
+    "teacher": 4,
+    "students": [
+      6,
+      8,
+      10,
+      9,
+      7
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 4,
+  "fields": {
+    "name": "Web dasturlash",
+    "code": "WEB004",
+    "credits": 5,
+    "teacher": 5,
+    "students": [
+      20,
+      4,
+      2,
+      21,
+      3
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 5,
+  "fields": {
+    "name": "Algoritmlar",
+    "code": "ALG005",
+    "credits": 6,
+    "teacher": 6,
+    "students": [
+      6,
+      8,
+      4,
+      5,
+      7
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 6,
+  "fields": {
+    "name": "Kompyuter tarmoqlari",
+    "code": "NET006",
+    "credits": 4,
+    "teacher": 7,
+    "students": [
+      15,
+      14,
+      13,
+      12,
+      16
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 7,
+  "fields": {
+    "name": "Operatsion tizimlar",
+    "code": "OS007",
+    "credits": 5,
+    "teacher": 8,
+    "students": [
+      15,
+      14,
+      17,
+      18,
+      16
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 8,
+  "fields": {
+    "name": "Java dasturlash",
+    "code": "JAVA008",
+    "credits": 6,
+    "teacher": 9,
+    "students": [
+      11,
+      14,
+      10,
+      13,
+      12
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 9,
+  "fields": {
+    "name": "Sun'iy intellekt",
+    "code": "AI009",
+    "credits": 6,
+    "teacher": 10,
+    "students": [
+      6,
+      4,
+      2,
+      5,
+      3
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 10,
+  "fields": {
+    "name": "Dasturiy injiniring",
+    "code": "SE010",
+    "credits": 5,
+    "teacher": 11,
+    "students": [
+      20,
+      19,
+      2,
+      21,
+      18
+    ]
+  }
+},
+{
+  "model": "university.subject",
+  "pk": 11,
+  "fields": {
+    "name": "FullStack",
+    "code": "FSD01",
+    "credits": 10,
+    "teacher": 9,
+    "students": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-09-11T14:15:15.676Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "university",
+      "teacher"
+    ],
+    "object_id": "2",
+    "object_repr": "Akmal Karimov",
+    "action_flag": 3,
+    "change_message": ""
+  }
+}
+]

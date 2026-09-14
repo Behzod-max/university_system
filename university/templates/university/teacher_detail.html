@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ teacher.first_name }} {{ teacher.last_name }}</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'university/css/style.css' %}?v=3"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Universitet fanlari tizimi</h1>
+
+    <nav class="navbar">
+
+        <a
+            class="nav-link"
+            href="{% url 'home' %}"
+        >
+            🏠 Bosh sahifa
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'subject_list' %}"
+        >
+            📚 Fanlar
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'teacher_list' %}"
+        >
+            👨‍🏫 O‘qituvchilar
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="detail-card">
+
+        <!-- O‘QITUVCHI MA’LUMOTLARI -->
+
+        <h1 class="subject-title">
+            👨‍🏫 {{ teacher.first_name }} {{ teacher.last_name }}
+        </h1>
+
+        <div class="info">
+            <strong>📞 Telefon:</strong> {{ teacher.phone }}
+        </div>
+
+        <div class="info">
+            <strong>📧 Email:</strong> {{ teacher.email }}
+        </div>
+
+        <div class="student-list">
+            <h2>📚 Biriktirilgan fanlar ({{ teacher.subjects.count }})</h2>
+
+            {% for subject in teacher.subjects.all %}
+                <div class="student">
+                    <div>
+                        <div class="student-name">{{ subject.name }}</div>
+                        <div class="group">{{ subject.code }} · {{ subject.students.count }} nafar talaba</div>
+                    </div>
+                    <a class="detail-btn" href="{% url 'subject_detail' subject.id %}">
+                        Batafsil →
+                    </a>
+                </div>
+            {% empty %}
+                <p>Bu o‘qituvchiga hali fan biriktirilmagan.</p>
+            {% endfor %}
+
+        </div>
+
+
+        <!-- ORQAGA QAYTISH -->
+
+        <a
+            class="back"
+            href="{% url 'subject_list' %}"
+        >
+            ← Fanlar ro‘yxatiga qaytish
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

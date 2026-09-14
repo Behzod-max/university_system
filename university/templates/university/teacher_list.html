@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O‘qituvchilar</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'university/css/style.css' %}?v=3"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Universitet fanlari tizimi</h1>
+
+    <nav class="navbar">
+
+        <a
+            class="nav-link"
+            href="{% url 'home' %}"
+        >
+            🏠 Bosh sahifa
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'subject_list' %}"
+        >
+            📚 Fanlar
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'teacher_list' %}"
+        >
+            👨‍🏫 O‘qituvchilar
+        </a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2 class="page-title">
+        👨‍🏫 O‘qituvchilar ro‘yxati
+    </h2>
+
+    <a
+        class="detail-btn"
+        href="{% url 'add_teacher' %}"
+    >
+        ➕ O‘qituvchi qo‘shish
+    </a>
+
+
+    <div class="subjects">
+
+        {% for teacher in teachers %}
+
+        <div class="card">
+
+            <h2>
+                👨‍🏫
+                {{ teacher.first_name }}
+                {{ teacher.last_name }}
+            </h2>
+
+
+            <div class="info">
+                📞 Telefon:
+                {{ teacher.phone }}
+            </div>
+
+
+            <div class="info">
+                📧 Email:
+                {{ teacher.email }}
+            </div>
+
+
+            <div class="students">
+                📚 Fanlar:
+                {{ teacher.subjects.count }}
+            </div>
+
+
+            <a
+                class="detail-btn"
+                href="{% url 'teacher_detail' teacher.id %}"
+            >
+                Fanlarini ko‘rish →
+            </a>
+
+        </div>
+
+        {% empty %}
+
+        <p>
+            Hozircha o‘qituvchilar mavjud emas.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

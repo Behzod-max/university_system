@@ -1,0 +1,164 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Universitet fanlari</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'university/css/style.css' %}?v=3"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Universitet fanlari tizimi</h1>
+
+    <nav class="navbar">
+
+        <a
+            class="nav-link"
+            href="{% url 'home' %}"
+        >
+            🏠 Bosh sahifa
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'subject_list' %}"
+        >
+            📚 Fanlar
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'teacher_list' %}"
+        >
+            👨‍🏫 O‘qituvchilar
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <h2 class="page-title">
+        📚 Fanlar ro‘yxati
+    </h2>
+
+
+    <!-- YANGI FAN QO‘SHISH -->
+
+    <a
+        class="detail-btn"
+        href="{% url 'add_subject' %}"
+    >
+        ➕ Yangi fan qo‘shish
+    </a>
+
+
+    <div class="subjects">
+
+        {% for subject in subjects %}
+
+        <div class="card">
+
+            <!-- FAN NOMI -->
+
+            <h2>
+                {{ subject.name }}
+            </h2>
+
+
+            <!-- FAN KODI -->
+
+            <div class="info">
+
+                Fan kodi:
+
+                <span class="code">
+                    {{ subject.code }}
+                </span>
+
+            </div>
+
+
+            <!-- KREDIT -->
+
+            <div class="info">
+
+                Kredit:
+                {{ subject.credits }}
+
+            </div>
+
+
+            <!-- O‘QITUVCHI -->
+
+            <div class="info">
+
+                O‘qituvchi:
+
+                {% if subject.teacher %}
+
+                    {{ subject.teacher.first_name }}
+                    {{ subject.teacher.last_name }}
+
+                {% else %}
+
+                    Biriktirilmagan
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- TALABALAR SONI -->
+
+            <div class="students">
+
+                👨‍🎓 Talabalar:
+                {{ subject.students.count }}
+
+            </div>
+
+
+            <!-- BATAFSIL -->
+
+            <a
+                class="detail-btn"
+                href="{% url 'subject_detail' subject.id %}"
+            >
+                Batafsil →
+            </a>
+
+        </div>
+
+
+        {% empty %}
+
+        <p>
+            Hozircha fanlar mavjud emas.
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

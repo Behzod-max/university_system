@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O‘qituvchi qo‘shish</title>
+    <link rel="stylesheet" href="{% static 'university/css/style.css' %}?v=3">
+</head>
+<body>
+<header>
+    <h1>🎓 Universitet fanlari tizimi</h1>
+    <nav class="navbar">
+        <a class="nav-link" href="{% url 'home' %}">🏠 Bosh sahifa</a>
+        <a class="nav-link" href="{% url 'subject_list' %}">📚 Fanlar</a>
+        <a class="nav-link" href="{% url 'teacher_list' %}">👨‍🏫 O‘qituvchilar</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="detail-card">
+        <h1 class="subject-title">➕ O‘qituvchi qo‘shish</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="first_name">Ism</label>
+                <input id="first_name" name="first_name" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Familiya</label>
+                <input id="last_name" name="last_name" type="text" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefon</label>
+                <input id="phone" name="phone" type="tel" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required>
+            </div>
+            <button type="submit" class="detail-btn">💾 Saqlash</button>
+        </form>
+        <a class="back" href="{% url 'teacher_list' %}">← O‘qituvchilar ro‘yxatiga qaytish</a>
+    </div>
+</div>
+</body>
+</html>

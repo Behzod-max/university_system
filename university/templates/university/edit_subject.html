@@ -1,0 +1,193 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fanni tahrirlash</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'university/css/style.css' %}?v=3"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Universitet fanlari tizimi</h1>
+
+    <nav class="navbar">
+
+        <a
+            class="nav-link"
+            href="{% url 'home' %}"
+        >
+            🏠 Bosh sahifa
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'subject_list' %}"
+        >
+            📚 Fanlar
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'teacher_list' %}"
+        >
+            👨‍🏫 O‘qituvchilar
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="detail-card">
+
+        <h1 class="subject-title">
+            ✏️ Fanni tahrirlash
+        </h1>
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+
+            <!-- FAN NOMI -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Fan nomi
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ subject.name }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- FAN KODI -->
+
+            <div class="form-group">
+
+                <label for="code">
+                    Fan kodi
+                </label>
+
+                <input
+                    type="text"
+                    id="code"
+                    name="code"
+                    value="{{ subject.code }}"
+                    required
+                >
+
+            </div>
+
+
+            <!-- KREDIT -->
+
+            <div class="form-group">
+
+                <label for="credits">
+                    Kredit
+                </label>
+
+                <input
+                    type="number"
+                    id="credits"
+                    name="credits"
+                    value="{{ subject.credits }}"
+                    min="1"
+                    required
+                >
+
+            </div>
+
+
+            <!-- O‘QITUVCHI -->
+
+            <div class="form-group">
+
+                <label for="teacher">
+                    O‘qituvchi
+                </label>
+
+                <select
+                    id="teacher"
+                    name="teacher"
+                >
+
+                    <option value="">
+                        — O‘qituvchini tanlang —
+                    </option>
+
+
+                    {% for teacher in teachers %}
+
+                    <option
+                        value="{{ teacher.id }}"
+                        {% if subject.teacher and subject.teacher.id == teacher.id %}
+                            selected
+                        {% endif %}
+                    >
+
+                        {{ teacher.first_name }}
+                        {{ teacher.last_name }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- SAQLASH -->
+
+            <button
+                type="submit"
+                class="detail-btn"
+            >
+                💾 O‘zgarishlarni saqlash
+            </button>
+
+        </form>
+
+
+        <!-- ORQAGA -->
+
+        <a
+            class="back"
+            href="{% url 'subject_detail' subject.id %}"
+        >
+            ← Fanga qaytish
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

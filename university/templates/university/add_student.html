@@ -1,0 +1,146 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Talaba qo‘shish</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'university/css/style.css' %}?v=3"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Universitet fanlari tizimi</h1>
+
+    <nav class="navbar">
+
+        <a
+            class="nav-link"
+            href="{% url 'home' %}"
+        >
+            🏠 Bosh sahifa
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'subject_list' %}"
+        >
+            📚 Fanlar
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'teacher_list' %}"
+        >
+            👨‍🏫 O‘qituvchilar
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="detail-card">
+
+        <h1 class="subject-title">
+            👨‍🎓 Talaba qo‘shish
+        </h1>
+
+        <div class="info">
+            <strong>Fan:</strong>
+            {{ subject.name }}
+        </div>
+
+        <div class="info">
+            <strong>Fan kodi:</strong>
+
+            <span class="code">
+                {{ subject.code }}
+            </span>
+        </div>
+
+
+        {% if students %}
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="info">
+
+                <label for="student_id">
+                    Talabani tanlang:
+                </label>
+
+                <select
+                    id="student_id"
+                    name="student_id"
+                    required
+                    class="student-select"
+                >
+
+                    <option value="">
+                        — Talabani tanlang —
+                    </option>
+
+                    {% for student in students %}
+
+                    <option value="{{ student.id }}">
+                        {{ student.first_name }}
+                        {{ student.last_name }}
+                        — {{ student.group }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="detail-btn"
+            >
+                ➕ Fanga qo‘shish
+            </button>
+
+        </form>
+
+        {% else %}
+
+        <p>
+            Bu fanga barcha talabalar biriktirilgan.
+        </p>
+
+        {% endif %}
+
+
+        <a
+            class="back"
+            href="{% url 'subject_detail' subject.id %}"
+        >
+            ← Fanga qaytish
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

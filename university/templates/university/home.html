@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Universitet tizimi</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'university/css/style.css' %}?v=3"
+    >
+</head>
+
+<body>
+
+<header>
+
+    <h1>🎓 Universitet fanlari tizimi</h1>
+
+    <nav class="navbar">
+
+        <a
+            class="nav-link"
+            href="{% url 'home' %}"
+        >
+            🏠 Bosh sahifa
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'subject_list' %}"
+        >
+            📚 Fanlar
+        </a>
+
+        <a
+            class="nav-link"
+            href="{% url 'teacher_list' %}"
+        >
+            👨‍🏫 O‘qituvchilar
+        </a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2 class="page-title">
+        📊 Boshqaruv paneli
+    </h2>
+
+
+    <div class="dashboard">
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                📚
+            </div>
+
+            <div class="dashboard-number">
+                {{ subject_count }}
+            </div>
+
+            <div class="dashboard-title">
+                Fanlar
+            </div>
+
+            <a
+                class="detail-btn"
+                href="{% url 'subject_list' %}"
+            >
+                Fanlarni ko‘rish →
+            </a>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                👨‍🏫
+            </div>
+
+            <div class="dashboard-number">
+                {{ teacher_count }}
+            </div>
+
+            <div class="dashboard-title">
+                O‘qituvchilar
+            </div>
+
+            <a
+                class="detail-btn"
+                href="{% url 'teacher_list' %}"
+            >
+                O‘qituvchilarni ko‘rish →
+            </a>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                👨‍🎓
+            </div>
+
+            <div class="dashboard-number">
+                {{ student_count }}
+            </div>
+
+            <div class="dashboard-title">
+                Talabalar
+            </div>
+
+            <a
+                class="detail-btn"
+                href="{% url 'subject_list' %}"
+            >
+                Fanlar orqali ko‘rish →
+            </a>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="dashboard-icon">
+                ➕
+            </div>
+
+            <div class="dashboard-title">
+                Yangi talaba
+            </div>
+
+            <a
+                class="detail-btn"
+                href="{% url 'add_student' %}"
+            >
+                Talaba qo‘shish →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
