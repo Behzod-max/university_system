@@ -167,6 +167,67 @@ header h1 {
     border-radius: 8px;
 }
 
+.signup-card {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.signup-card .subject-title {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.signup-card .form-group {
+    padding: 18px;
+    margin-bottom: 16px;
+    border-left-width: 4px;
+    background: rgba(241, 247, 250, 0.7);
+}
+
+.signup-card .form-group input {
+    display: block;
+    max-width: none;
+    margin-bottom: 8px;
+    background: #ffffff;
+}
+
+.signup-card .form-group small {
+    display: block;
+    max-width: 620px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.signup-card .errorlist {
+    padding: 0;
+    margin: 6px 0 0;
+    color: var(--coral);
+    font-size: 13px;
+    list-style: none;
+}
+
+.signup-card form > label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0 8px;
+    color: var(--muted);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.signup-card form > label input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--teal);
+}
+
+.signup-card .detail-btn {
+    width: 100%;
+    margin-top: 12px;
+}
+
 .welcome-card {
     max-width: 680px;
     margin: 32px auto 0;
