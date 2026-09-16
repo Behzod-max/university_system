@@ -53,6 +53,12 @@ urlpatterns = [
     ),
 
     path(
+        "students/",
+        views.student_list,
+        name="student_list"
+    ),
+
+    path(
         "teachers/<int:teacher_id>/",
         views.teacher_detail,
         name="teacher_detail"

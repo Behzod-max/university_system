@@ -12,7 +12,7 @@
 
     <link
         rel="stylesheet"
-        href="{% static 'university/css/style.css' %}?v=3"
+        href="{% static 'university/css/style.css' %}?v=5"
     >
 </head>
 
@@ -55,15 +55,17 @@
         👨‍🏫 O‘qituvchilar ro‘yxati
     </h2>
 
-    <a
-        class="detail-btn"
-        href="{% url 'add_teacher' %}"
-    >
-        ➕ O‘qituvchi qo‘shish
-    </a>
+    {% if user.is_staff %}
+        <a
+            class="detail-btn"
+            href="{% url 'add_teacher' %}"
+        >
+            ➕ O‘qituvchi qo‘shish
+        </a>
+    {% endif %}
 
 
-    <div class="subjects">
+    <div class="subjects teacher-directory">
 
         {% for teacher in teachers %}
 
@@ -71,8 +73,8 @@
 
             <h2>
                 👨‍🏫
-                {{ teacher.first_name }}
                 {{ teacher.last_name }}
+                {{ teacher.first_name }}
             </h2>
 
 

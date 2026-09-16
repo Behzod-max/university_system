@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talabalar</title>
+    <link rel="stylesheet" href="{% static 'university/css/style.css' %}?v=5">
+</head>
+<body>
+<header>
+    <h1>🎓 Universitet fanlari tizimi</h1>
+    <nav class="navbar">
+        <a class="nav-link" href="{% url 'home' %}">🏠 Bosh sahifa</a>
+        <a class="nav-link" href="{% url 'subject_list' %}">📚 Fanlar</a>
+        <a class="nav-link" href="{% url 'teacher_list' %}">👨‍🏫 O‘qituvchilar</a>
+    </nav>
+</header>
+<div class="container">
+    <h2 class="page-title">👨‍🎓 Umumiy talabalar ({{ students|length }})</h2>
+
+    <a class="detail-btn" href="{% url 'add_student' %}">➕ Talaba qo‘shish</a>
+
+    <div class="subjects student-directory">
+        {% for student in students %}
+            <div class="card">
+                <h2>👨‍🎓 {{ student.last_name }} {{ student.first_name }}</h2>
+                <div class="info">Guruh: {{ student.group }}</div>
+                <div class="info">Email: {{ student.email }}</div>
+                <div class="students">Fanlar: {{ student.subjects.count }}</div>
+            </div>
+        {% empty %}
+            <p>Hozircha talabalar mavjud emas.</p>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

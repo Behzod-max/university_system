@@ -60,6 +60,10 @@ header h1 {
     gap: 22px;
 }
 
+.student-directory {
+    grid-template-columns: 1fr;
+}
+
 .card,
 .dashboard-card,
 .detail-card {
@@ -161,6 +165,49 @@ header h1 {
 .detail-card {
     padding: 35px;
     border-radius: 8px;
+}
+
+.welcome-card {
+    max-width: 680px;
+    margin: 32px auto 0;
+    padding: 48px 56px;
+    text-align: center;
+}
+
+.welcome-kicker {
+    margin-bottom: 14px;
+    color: var(--teal-dark);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.welcome-card .page-title {
+    margin-bottom: 14px;
+    font-size: 32px;
+}
+
+.welcome-text {
+    max-width: 480px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.welcome-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.welcome-actions .detail-btn,
+.welcome-actions .back {
+    min-width: 155px;
+    margin: 18px 0 0;
+    text-align: center;
 }
 
 .subject-title {
@@ -393,5 +440,68 @@ header h1 {
     .student {
         align-items: flex-start;
         flex-direction: column;
+    }
+}
+
+.subjects.student-directory {
+    grid-template-columns: 1fr !important;
+}
+
+.student-directory .card {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1.8fr 0.6fr;
+    align-items: center;
+    gap: 18px;
+}
+
+.student-directory .card::before {
+    display: none;
+}
+
+.student-directory .card h2,
+.student-directory .card .info,
+.student-directory .card .students {
+    margin: 0;
+}
+
+.teacher-directory {
+    grid-template-columns: 1fr !important;
+}
+
+.teacher-directory .card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.8fr 0.6fr 1fr;
+    align-items: center;
+    gap: 18px;
+}
+
+.teacher-directory .card::before {
+    display: none;
+}
+
+.teacher-directory .card h2,
+.teacher-directory .card .info,
+.teacher-directory .card .students,
+.teacher-directory .card .detail-btn {
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .student-directory .card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .teacher-directory .card {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .student-directory .card {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-directory .card {
+        grid-template-columns: 1fr;
     }
 }

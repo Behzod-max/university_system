@@ -97,8 +97,8 @@
 
             {% if subject.teacher %}
 
-                {{ subject.teacher.first_name }}
                 {{ subject.teacher.last_name }}
+                {{ subject.teacher.first_name }}
 
             {% else %}
 
@@ -123,12 +123,14 @@
 
             <!-- TALABA QO‘SHISH TUGMASI -->
 
-            <a
-                class="detail-btn"
-                href="{% url 'add_student_to_subject' subject.id %}"
-            >
-                ➕ Talaba qo‘shish
-            </a>
+            {% if user.is_staff %}
+                <a
+                    class="detail-btn"
+                    href="{% url 'add_student_to_subject' subject.id %}"
+                >
+                    ➕ Talaba qo‘shish
+                </a>
+            {% endif %}
 
 
             <!-- TALABALAR RO‘YXATI -->
@@ -143,9 +145,9 @@
 
                             {{ forloop.counter }}.
 
-                            {{ student.first_name }}
-
                             {{ student.last_name }}
+
+                            {{ student.first_name }}
 
                         </div>
 
@@ -162,11 +164,12 @@
 
                     <!-- TALABANI O‘CHIRISH -->
 
-                    <form
-                        method="post"
-                        action="{% url 'remove_student_from_subject' subject.id student.id %}"
-                        onsubmit="return confirm('Bu talabani fandan olib tashlamoqchimisiz?');"
-                    >
+                    {% if user.is_staff %}
+                        <form
+                            method="post"
+                            action="{% url 'remove_student_from_subject' subject.id student.id %}"
+                            onsubmit="return confirm('Bu talabani fandan olib tashlamoqchimisiz?');"
+                        >
 
                         {% csrf_token %}
 
@@ -177,7 +180,8 @@
                             ❌ O‘chirish
                         </button>
 
-                    </form>
+                        </form>
+                    {% endif %}
 
                 </div>
 
@@ -192,13 +196,14 @@
         </div>
 
 
-        <div class="subject-actions subject-actions-bottom">
-            <a
-                class="detail-btn"
-                href="{% url 'edit_subject' subject.id %}"
-            >
-                ✏️ Tahrirlash
-            </a>
+        {% if user.is_staff %}
+            <div class="subject-actions subject-actions-bottom">
+                <a
+                    class="detail-btn"
+                    href="{% url 'edit_subject' subject.id %}"
+                >
+                    ✏️ Tahrirlash
+                </a>
 
             <form
                 method="post"
@@ -209,8 +214,9 @@
                 <button type="submit" class="remove-btn">
                     🗑️ O‘chirish
                 </button>
-            </form>
-        </div>
+                </form>
+            </div>
+        {% endif %}
 
 
         <!-- ORQAGA QAYTISH -->

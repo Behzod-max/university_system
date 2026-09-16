@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirish</title>
+    <link rel="stylesheet" href="{% static 'university/css/style.css' %}?v=3">
+</head>
+<body>
+<header>
+    <h1>🎓 Universitet fanlari tizimi</h1>
+    <nav class="navbar">
+        <a class="nav-link" href="{% url 'signup' %}">✍️ Ro‘yxatdan o‘tish</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="detail-card">
+        <h1 class="subject-title">🔑 Tizimga kirish</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+
+            <label>
+                <input type="checkbox" id="show-passwords">
+                Parolni ko‘rsatish
+            </label>
+
+            <button type="submit" class="detail-btn">🔓 Kirish</button>
+        </form>
+        <a class="back" href="{% url 'signup' %}">Hisobingiz yo‘qmi? Ro‘yxatdan o‘ting</a>
+    </div>
+</div>
+<script>
+    document.getElementById("show-passwords").addEventListener("change", function () {
+        document.querySelectorAll('input[type="password"]').forEach(function (input) {
+            input.type = this.checked ? "text" : "password";
+        }, this);
+    });
+</script>
+</body>
+</html>

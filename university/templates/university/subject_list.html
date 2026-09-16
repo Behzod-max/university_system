@@ -62,12 +62,14 @@
 
     <!-- YANGI FAN QO‘SHISH -->
 
-    <a
-        class="detail-btn"
-        href="{% url 'add_subject' %}"
-    >
-        ➕ Yangi fan qo‘shish
-    </a>
+    {% if user.is_staff %}
+        <a
+            class="detail-btn"
+            href="{% url 'add_subject' %}"
+        >
+            ➕ Yangi fan qo‘shish
+        </a>
+    {% endif %}
 
 
     <div class="subjects">
@@ -114,8 +116,8 @@
 
                 {% if subject.teacher %}
 
-                    {{ subject.teacher.first_name }}
                     {{ subject.teacher.last_name }}
+                    {{ subject.teacher.first_name }}
 
                 {% else %}
 

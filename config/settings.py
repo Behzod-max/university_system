@@ -144,6 +144,8 @@ MAILERS = {
 
 STATIC_URL = "/static/"
 
+LOGIN_URL = "/signin/"
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]

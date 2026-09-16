@@ -19,7 +19,7 @@
     >
 </head>
 
-<body>
+<body class="guest-page">
 
 <header>
 
@@ -27,26 +27,21 @@
 
     <nav class="navbar">
 
-        <a
-            class="nav-link"
-            href="{% url 'home' %}"
-        >
-            🏠 Bosh sahifa
-        </a>
+        {% if user.is_authenticated %}
+            <a
+                class="nav-link"
+                href="{% url 'home' %}"
+            >
+                🏠 Bosh sahifa
+            </a>
+        {% endif %}
 
-        <a
-            class="nav-link"
-            href="{% url 'subject_list' %}"
-        >
-            📚 Fanlar
-        </a>
-
-        <a
-            class="nav-link"
-            href="{% url 'teacher_list' %}"
-        >
-            👨‍🏫 O‘qituvchilar
-        </a>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'signout' %}">
+                {% csrf_token %}
+                <button class="nav-link" type="submit">🚪 Chiqish</button>
+            </form>
+        {% endif %}
 
     </nav>
 
@@ -54,10 +49,10 @@
 
 <div class="container">
 
+    {% if user.is_authenticated %}
     <h2 class="page-title">
         📊 Boshqaruv paneli
     </h2>
-
 
     <div class="dashboard">
 
@@ -109,6 +104,7 @@
         </div>
 
 
+        {% if user.is_staff %}
         <div class="dashboard-card">
 
             <div class="dashboard-icon">
@@ -125,9 +121,9 @@
 
             <a
                 class="detail-btn"
-                href="{% url 'subject_list' %}"
+                href="{% url 'student_list' %}"
             >
-                Fanlar orqali ko‘rish →
+                Markazdagi talabalar →
             </a>
 
         </div>
@@ -151,8 +147,20 @@
             </a>
 
         </div>
+        {% endif %}
 
     </div>
+    {% else %}
+        <div class="detail-card welcome-card">
+            <div class="welcome-kicker">UNIVERSITET AXBOROT TIZIMI</div>
+            <h2 class="page-title">Universitet tizimiga xush kelibsiz</h2>
+            <p class="welcome-text">O‘quv markazi ma’lumotlarini boshqarish va ko‘rish uchun tizimga kiring.</p>
+            <div class="welcome-actions">
+                <a class="detail-btn" href="{% url 'signin' %}">Kirish</a>
+                <a class="back" href="{% url 'signup' %}">Ro‘yxatdan o‘tish</a>
+            </div>
+        </div>
+    {% endif %}
 
 </div>
 

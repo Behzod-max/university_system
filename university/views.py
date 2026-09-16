@@ -1,9 +1,69 @@
 
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth import login, logout
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django import forms
 
 
 
 from .models import Subject, Teacher, Student
+
+
+class UzbekUserCreationForm(UserCreationForm):
+    username = forms.CharField(
+        label="Foydalanuvchi nomi",
+        help_text="150 ta belgigacha bo‘lishi mumkin. Harflar, raqamlar va @/./+/-/_ belgilaridan foydalaning.",
+    )
+    password1 = forms.CharField(
+        label="Parol",
+        strip=False,
+        widget=forms.PasswordInput,
+        help_text="Parol kamida 8 ta belgidan iborat bo‘lishi, oddiy bo‘lmasligi, faqat raqamlardan tuzilmasligi va foydalanuvchi nomiga o‘xshamasligi kerak.",
+    )
+    password2 = forms.CharField(
+        label="Parolni tasdiqlash",
+        strip=False,
+        widget=forms.PasswordInput,
+        help_text="Tasdiqlash uchun parolni yana bir marta kiriting.",
+    )
+
+
+def signup(request):
+    form = UzbekUserCreationForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect("home")
+
+    return render(
+        request,
+        "university/signup.html",
+        {"form": form}
+    )
+
+
+def signin(request):
+    form = AuthenticationForm(request, data=request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        login(request, form.get_user())
+        return redirect("home")
+
+    return render(
+        request,
+        "university/signin.html",
+        {"form": form}
+    )
+
+
+def signout(request):
+    if request.method == "POST":
+        logout(request)
+
+    return redirect("home")
 
 
 def home(request):
@@ -20,6 +80,7 @@ def home(request):
     )
 
 
+@login_required
 def subject_list(request):
     subjects = (
         Subject.objects
@@ -34,6 +95,7 @@ def subject_list(request):
     )
 
 
+@login_required
 def subject_detail(request, subject_id):
     subject = get_object_or_404(
         Subject.objects
@@ -49,6 +111,7 @@ def subject_detail(request, subject_id):
     )
 
 
+@login_required
 def teacher_list(request):
     teachers = Teacher.objects.prefetch_related("subjects")
 
@@ -59,6 +122,7 @@ def teacher_list(request):
     )
 
 
+@staff_member_required
 def add_teacher(request):
     if request.method == "POST":
         Teacher.objects.create(
@@ -73,6 +137,7 @@ def add_teacher(request):
     return render(request, "university/add_teacher.html")
 
 
+@staff_member_required
 def add_student(request):
     if request.method == "POST":
         Student.objects.create(
@@ -87,6 +152,22 @@ def add_student(request):
     return render(request, "university/add_student_form.html")
 
 
+@staff_member_required
+def student_list(request):
+    students = (
+        Student.objects
+        .prefetch_related("subjects")
+        .order_by("last_name", "first_name")
+    )
+
+    return render(
+        request,
+        "university/student_list.html",
+        {"students": students}
+    )
+
+
+@login_required
 def teacher_detail(request, teacher_id):
     teacher = get_object_or_404(
         Teacher.objects.prefetch_related("subjects__students"),
@@ -99,6 +180,7 @@ def teacher_detail(request, teacher_id):
         {"teacher": teacher}
     )
 
+@staff_member_required
 def add_subject(request):
 
     if request.method == "POST":
@@ -135,6 +217,7 @@ def add_subject(request):
         }
     )
 
+@staff_member_required
 def edit_subject(request, subject_id):
 
     subject = get_object_or_404(
@@ -180,6 +263,7 @@ def edit_subject(request, subject_id):
         }
     )
 
+@staff_member_required
 def delete_subject(request, subject_id):
 
     subject = get_object_or_404(
@@ -196,6 +280,7 @@ def delete_subject(request, subject_id):
     return redirect("subject_detail", subject_id=subject.id)
 
 
+@staff_member_required
 def add_student_to_subject(request, subject_id):
     subject = get_object_or_404(Subject, id=subject_id)
 
@@ -228,6 +313,7 @@ def add_student_to_subject(request, subject_id):
         }
     )
 
+@staff_member_required
 def remove_student_from_subject(request, subject_id, student_id):
     subject = get_object_or_404(
         Subject,
